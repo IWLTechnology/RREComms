@@ -1,0 +1,35 @@
+{
+  "name": "RREComms",
+  "short_name": "RREComms",
+  "description": "A private chat application",
+  "display": "standalone",
+  "icons": [
+    {
+      "sizes": "512x512",
+      "type": "image/png",
+      "src": "https://heartfeltwideeyeddos.iwltech.repl.co/IWL_ROCKET_LOGO.jpg",
+      "purpose": "any"
+    },
+    {
+      "sizes": "192x192",
+      "type": "image/png",
+      "src": "https://heartfeltwideeyeddos.iwltech.repl.co/IWL_ROCKET_LOGO.jpg",
+      "purpose": "any"
+    },
+    {
+      "sizes": "180x180",
+      "type": "image/png",
+      "src": "https://heartfeltwideeyeddos.iwltech.repl.co/IWL_ROCKET_LOGO.jpg",
+      "purpose": "any"
+    },
+    {
+      "sizes": "120x120",
+      "type": "image/png",
+      "src": "https://heartfeltwideeyeddos.iwltech.repl.co/IWL_ROCKET_LOGO.jpg",
+      "purpose": "any"
+    }
+  ],
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "start_url": "/"
+}

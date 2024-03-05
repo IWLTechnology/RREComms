@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@800&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Gravitas+One&display=swap" rel="stylesheet"/>
+  
+      <meta name="description" content="{{seo.description}}" />
+    <meta name="og:description" content="{{seo.description}}" />
+    <meta property="og:image" content="{{seo.image}}" />
+    <meta property="og:title" content="{{seo.titleExclusive}}" />
+    <meta name="twitter:card" content="summary" />
+    <link rel="icon" href="{{seo.icon}}" />
+    <link rel="stylesheet" type="text/css" href="{{seo.chatroomStyle}}" />
+
+    <link rel="manifest" href="{{seo.manifest}}" />
+  
+  <title>{{name}} {{seo.title}}</title>
+  <script src="{{seo.chatroomScript}}"></script>
+  <script src="{{seo.installScript}}" async defer></script>
+  <script src="{{seo.soundScript}}"></script>
+  <style>
+  .ab {
+  float: right;
+}
+    .logo {
+  width: 65px;
+  height: 65px;
+}
+    .head {
+  font-family: Permanent Marker;
+  font-size: 20px;
+}
+    .start:hover {
+      background-color: black!important;
+      color: white!important;
+      cursor: default!important;
+    }
+    hr{
+      display: block!important;
+  margin-top: 0.5em!important;
+  margin-bottom: 0.5em!important;
+  border-style: inset!important;
+  border-width: 1px!important;
+  width: 50%;!important
+    }
+  </style>
+</head>
+
+<body onload="init()" class="w3-orange">
+  <div id="enabled">
+      <div class="w3-top">
+      <div class="w3-bar w3-black">
+        <h3 style="" class="w3-bar-item w3-button w3-show-inline-block start"><span class="logo"></span><span></span><span class="head">{{name}} {{seo.title}}</span></h3>
+        <h3 onclick="logout()" class="w3-bar-item w3-button w3-right ab w3-show-inline-block"><span class="logo"></span><span></span><span class="head">Logout</span></h3>
+        <h3 onclick="settings()" class="w3-bar-item w3-button w3-right ab w3-show-inline-block"><span class="logo"></span><span></span><span class="head">Settings</span></h3>
+        <h3 onclick="toggleSound()" class="w3-bar-item w3-button w3-right ab w3-show-inline-block"><span class="logo"></span><span></span><span class="head"  id="toggleSound">Mute</span></h3>
+      </div>
+    </div>
+    <div class="w3-center">
+    <br/><br/><br/><br/><br/><br/>
+        <h1>
+          Welcome, {{name}}!
+        </h1>
+        <hr style="width:50%!important;text-align:center!important;margin-right:0!important;">
+    
+    <div id="iframes" style="display: none;">
+    
+  </div>
+  {{#if image}}
+        <img class="img1" src="{{image}}" alt="Sorry This Image Could Not Be Loaded. Please Reload.">
+<br /><br/><br/>
+  {{/if}}
+  <div id="messageBox" class="w3-center">
+    <input type="password" style="display: none;" value="{{chats}}" id="chats">
+    <input type="password" style="display: none;" value="{{un}}" id="un">
+    <input type="password" style="display: none;" value="{{pw}}" id="pw">
+    <input type="password" style="display: none;" value="{{pin}}" id="pin">
+    <input type="password" style="display: none;" value="{{ids}}" id="ids">
+    <input id="name" type="password" value="{{name}}" style="display: none;">
+    <div id="messages" class="w3-center">
+      
+    </div>
+  </div>
+  <br />
+  <br />
+  <br />
+      <br />
+  <br />
+  <br />
+    <div class="w3-bottom w3-black">
+      <div class="w3-bar">
+        <input id="post" type="text" name="post" placeholder="Enter your message" class=" w3-bar-item w3-input w3-bar-item w3-round-large w3-border w3-border-black w3-ripple"><span class="w3-bar-item"></span>
+      <button onclick="send()" class=" w3-bar-item w3-blue w3-btn w3-round-large w3-border w3-border-blue w3-ripple w3-center">Post</button>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div id="disabled">
+    <h1>
+      Error - Javascript is Disabled
+    </h1><br/>
+    <p>
+      Please enable javascript then reload to continue.
+    </p>
+  </div>  
+  </body>
+
+
+</html>
