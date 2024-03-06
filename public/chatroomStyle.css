@@ -18,7 +18,7 @@
       height: 301px;
     }
     tag {
-      background-colour: grey
+      background-color: grey
     }
     h1 {
       font-family: Permanent Marker; /* Permanent Marker | Abril Fatface | Alfa Slab One | Gravitas One / Abhaya Libre*/
@@ -91,3 +91,40 @@ img.install {
   border: none;
   -webkit-appearance: none;
 }
+
+.ab {
+  float: right;
+}
+    .logo {
+  width: 65px;
+  height: 65px;
+}
+.sendLogo {
+  width: 50px;
+  height: 50px;
+  color: white;
+  background-color: white;
+}
+.sendLogoBase {
+  background-color: white;
+}
+    .head {
+  font-family: Permanent Marker;
+  font-size: 20px;
+}
+    .messageBox {
+  font-family: Abhaya Libre;
+  font-size: 20px;
+}
+    .start:hover {
+      background-color: black!important;
+      color: white!important;
+      cursor: default!important;
+    }
+    .messageBtn{
+      font-size: 40px;
+    }
+    .postBtn{
+      background-color: white;
+      color: black;
+    }

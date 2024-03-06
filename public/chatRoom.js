@@ -13,15 +13,17 @@
       logins[2] = document.getElementById('pin').value;
       submitData('/', '1', [['un', logins[0]], ['pw', logins[1]], ['pin', logins[2]], ['mode', 'get']])
       document.getElementById('iframes').children[0].addEventListener('load', function(){
-        document.getElementById('ids').value = document.getElementById('iframes').children[0].contentWindow.document.getElementById('ids').value;
+          if(document.getElementById('iframes').children[0].contentWindow.document.getElementById('chats').value != oldChats){
+          document.getElementById('ids').value = document.getElementById('iframes').children[0].contentWindow.document.getElementById('ids').value;
           document.getElementById('chats').value = document.getElementById('iframes').children[0].contentWindow.document.getElementById('chats').value;
-          document.getElementById('iframes').innerHTML = '';
-          splitMessages();
-          if(oldChats != document.getElementById('chats').value){
+            document.getElementById('iframes').innerHTML = '';
             if(document.getElementById('toggleSound').innerHTML == 'Mute'){
                 message('You got a new message!', 'Open RLComms / Games to see more.')
                 createjs.Sound.play("messageIn");
             }
+            splitMessages();
+          }else{
+            document.getElementById('iframes').innerHTML = '';
           }
       });
     }
@@ -192,4 +194,46 @@ function message(title, message) {
             });
         }
     }
+}
+
+function image(){
+  var source = prompt('Enter the URL of the image to be added to the end of the message you have currently typed:');
+  if(source != null){
+    if(source.search('data:') == -1){
+      document.getElementById('post').value += `<img src="${source}">`;
+    }else{
+      alert('You cannot use images without a url; they cannot contain data: in it.');
+    }
+  }
+}
+function video(){
+  var source = prompt('Enter the URL of the video to be added to the end of the message you have currently typed:');
+  if(source != null){
+       document.getElementById('post').value += `<video controls>
+  <source src="${source}" type="video/mp4">
+  <source src="${source}" type="video/ogg">
+  Your browser does not support the video tag.
+</video>`;
+  }
+}
+function audio(){
+  var source = prompt('Enter the URL of the audio file to be added to the end of the message you have currently typed:');
+    if(source != null){
+     document.getElementById('post').value += `<audio controls>
+  <source src="${source}" type="audio/ogg">
+  <source src="${source}" type="audio/mpeg">
+  Your browser does not support the audio tag.
+</audio>`;
+  }
+}
+function link(){
+  var source = prompt('Enter the URL of the link to be added to the end of the message you have currently typed:');
+  var txt = prompt('Enter the text to display as the link (leave blank to use the URL as the text):');
+  if(source != null){
+    if(txt != ''){
+     document.getElementById('post').value += `<a href="${source}">${txt}</a>`; 
+    }else{
+      document.getElementById('post').value += `<a href="${source}">${source}</a>`;
+    }
+  }
 }

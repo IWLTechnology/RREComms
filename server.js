@@ -57,7 +57,6 @@ fastify.post('/', async (req, reply) => {
         var date = new Date();
     var txt = req.body.post;
 	  txt = txt.replace(/\n/g, "<br />");
-	  txt = txt.replace(/(https?:\/\/[^\s]+)/g, "<a href=\"$1\" target=\"_blank\">$1</a>");
     txt = txt.replace(/;/g, ",");
     txt = txt.replace(/\'/g, "\"");
     date = date.toLocaleString('en-US', { timeZone: 'Australia/Perth' });
@@ -68,7 +67,6 @@ fastify.post('/', async (req, reply) => {
         var date = new Date();
     var txt = req.body.post;
 	  txt = txt.replace(/\n/g, "<br />");
-	  txt = txt.replace(/(https?:\/\/[^\s]+)/g, "<a href=\"$1\" target=\"_blank\">$1</a>");
     txt = txt.replace(/;/g, ",");
     txt = txt.replace(/\'/g, "\"");
     date = date.toLocaleString('en-US', { timeZone: 'Australia/Perth' });
@@ -79,7 +77,6 @@ fastify.post('/', async (req, reply) => {
         var date = new Date();
     var txt = req.body.post;
 	  txt = txt.replace(/\n/g, "<br />");
-	  txt = txt.replace(/(https?:\/\/[^\s]+)/g, "<a href=\"$1\" target=\"_blank\">$1</a>");
     txt = txt.replace(/;/g, ",");
     txt = txt.replace(/\'/g, "\"");
     date = date.toLocaleString('en-US', { timeZone: 'Australia/Perth' });
