@@ -45,6 +45,10 @@
 
   
     function sendMessage(message){
+      var id = document.getElementById('ids').value.split(';')
+      checkAuthor(id[id.length-1]);
+      var name = document.getElementById('name').value;
+      message = message + `<input type="text" value="${name}" class="messagePostedBy" style="display: none;">`;
       var logins = ['', '', '']
       logins[0] = document.getElementById('un').value;
       logins[1] = document.getElementById('pw').value;
@@ -58,18 +62,33 @@
         }
       })
     }
-    
+    function checkAuthor(id){
+      var x = document.getElementById('chat' + id);
+      var y = x.innerHTML.split('<input type="text" value="');
+      var author = y[1].split('" class="messagePostedBy"')[0];
+      alert(author);
+      
+    }
     function splitMessages(){
       document.getElementById('messages').innerHTML = '';
       var chats = document.getElementById('chats').value;
       var ids = document.getElementById('ids').value;
       chats = chats.split(';');
       ids = ids.split(';');
+      var chats2 = [];
+      var ids2 = [];
+          for(var i = chats.length-1; i > -1; i--){
+            chats2.push(chats[i]);
+          } //chats now in sendChats, separated by &
+          
+          for(var i = ids.length-1; i > -1; i--){
+            ids2.push(ids[i]);
+          } //ids now in sendIds, separated by &
       
-      for(var i = 0; i < chats.length; i++){
-        var chat = chats[i];
-        var id = ids[i];
-        document.getElementById('messages').innerHTML += `<div id="chat" class="w3-bar"><span class="w3-bar-item">${chat}</span><span></span><a class="w3-blue w3-btn w3-round-large w3-border w3-border-blue w3-ripple w3-center w3-bar-item" onclick="deleteMessage(${id})">Delete</a></div><br/><br/>`
+      for(var i = 0; i < chats2.length; i++){
+        var chat = chats2[i];
+        var id = ids2[i];
+        document.getElementById('messages').innerHTML += `<div id="chat${id}" class="w3-bar"><span class="w3-bar-item">${chat}</span><span></span><a class="w3-blue w3-btn w3-round-large w3-border w3-border-blue w3-ripple w3-center w3-bar-item" onclick="deleteMessage(${id})">Delete</a></div><br/><br/>`
       }
     }
     
@@ -78,6 +97,9 @@
     }
     
     function init(){
+      setTimeout(function(){
+             document.getElementById("msbtm").click(); 
+      }, 100);
       message('RLComms is active!', 'RLComms is active!')
       document.getElementById("enabled").style.display = "block";
       document.getElementById("disabled").style.display = "none";
@@ -99,7 +121,6 @@
             {id: "messageError",  src: "messageError.ogg"} ],
               "//cdn.glitch.global/7fa50741-117a-440b-9131-6b9e1e32b36c/");
         }
-      
     }
     
     function submitData(address, id, params){
@@ -209,11 +230,18 @@ function image(){
 function video(){
   var source = prompt('Enter the URL of the video to be added to the end of the message you have currently typed:');
   if(source != null){
+    if(source.search('youtube.com') == -1){
        document.getElementById('post').value += `<video controls>
   <source src="${source}" type="video/mp4">
   <source src="${source}" type="video/ogg">
+  <source src="${source}" type="video/webm">
+  <source src="${source}" type="video/mov">
   Your browser does not support the video tag.
 </video>`;
+    }else{
+      source = source.split('/watch?v=')[1];
+      document.getElementById('post').value += `<iframe width="560" height="315" src="https://www.youtube.com/embed/${source}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`;
+    }
   }
 }
 function audio(){

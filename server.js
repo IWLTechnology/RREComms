@@ -60,7 +60,7 @@ fastify.post('/', async (req, reply) => {
     txt = txt.replace(/;/g, ",");
     txt = txt.replace(/\'/g, "\"");
     date = date.toLocaleString('en-US', { timeZone: 'Australia/Perth' });
-    var temp = "R: " + txt + " (Posted on " + date + ")";
+    var temp = "RW: " + txt + " (Posted on " + date + ")";
     await db.addMessage(temp);
       }else if(req.body.un == process.env.pun && req.body.pw == process.env.ppw && req.body.pin == process.env.ppin){
         view = '/src/pages/post.hbs';
@@ -70,7 +70,7 @@ fastify.post('/', async (req, reply) => {
     txt = txt.replace(/;/g, ",");
     txt = txt.replace(/\'/g, "\"");
     date = date.toLocaleString('en-US', { timeZone: 'Australia/Perth' });
-    var temp = "P: " + txt + " (Posted on " + date + ")";
+    var temp = "RP: " + txt + " (Posted on " + date + ")";
     await db.addMessage(temp);
       }else if(req.body.un == process.env.eun && req.body.pw == process.env.epw && req.body.pin == process.env.epin){
         view = '/src/pages/post.hbs';
@@ -196,7 +196,7 @@ fastify.post('/', async (req, reply) => {
         params.pw = process.env.rpw;
         params.pin = process.env.rpin;
         view = '/src/pages/chatHome.hbs';
-        params.name = 'R';
+        params.name = 'RW';
         params.error = "";
       var dbIn = await db.getMessages();
         var chats = [];
@@ -226,7 +226,7 @@ fastify.post('/', async (req, reply) => {
         params.pw = process.env.ppw;
         params.pin = process.env.ppin;
         view = '/src/pages/chatHome.hbs';
-        params.name = 'P';
+        params.name = 'RP';
         params.error = "";
       var dbIn = await db.getMessages();
         var chats = [];
