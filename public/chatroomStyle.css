@@ -128,3 +128,6 @@ img.install {
       background-color: white;
       color: black;
     }
+.messagePostedBy{
+  display: none;
+}
