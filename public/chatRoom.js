@@ -45,8 +45,6 @@
 
   
     function sendMessage(message){
-      var id = document.getElementById('ids').value.split(';')
-      checkAuthor(id[id.length-1]);
       var name = document.getElementById('name').value;
       message = message + `<input type="text" value="${name}" class="messagePostedBy" style="display: none;">`;
       var logins = ['', '', '']
@@ -66,7 +64,25 @@
       var x = document.getElementById('chat' + id);
       var y = x.innerHTML.split('<input type="text" value="');
       var author = y[1].split('" class="messagePostedBy"')[0];
-      alert(author);
+      if(author == document.getElementById('name').value){
+        var lst = document.getElementById('chat' + id).classList;
+        lst.add("w3-blue");
+        lst.add("w3-right");
+        lst.add("w3-round-large");
+        lst.add("w3-show-inline-block");
+        lst.add("w3-bar-item");
+        var st = document.getElementById('chat' + id).style;
+        st.width="33%";
+      }else{
+        var lst = document.getElementById('chat' + id).classList;
+        lst.add("w3-red");
+        lst.add("w3-left");
+        lst.add("w3-round-large");
+        lst.add("w3-show-inline-block");
+        lst.add("w3-bar-item");
+        var st = document.getElementById('chat' + id).style;
+        st.width="33%";
+      }
       
     }
     function splitMessages(){
@@ -88,7 +104,11 @@
       for(var i = 0; i < chats2.length; i++){
         var chat = chats2[i];
         var id = ids2[i];
-        document.getElementById('messages').innerHTML += `<div id="chat${id}" class="w3-bar"><span class="w3-bar-item">${chat}</span><span></span><a class="w3-blue w3-btn w3-round-large w3-border w3-border-blue w3-ripple w3-center w3-bar-item" onclick="deleteMessage(${id})">Delete</a></div><br/><br/>`
+        document.getElementById('messages').innerHTML += `<div id="chat${id}" class="w3-bar"><span class="w3-bar-item">${chat}</span><span></span><a class="w3-blue w3-btn w3-round-large w3-border w3-border-blue w3-ripple w3-center w3-bar-item" onclick="deleteMessage(${id})">Delete</a></div><br/><br/><br/><br/><br/>`
+      }
+                  var id = document.getElementById('ids').value.split(';');
+      for(var i =  0; i < id.length; i++){
+              checkAuthor(id[i]);
       }
     }
     
