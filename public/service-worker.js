@@ -8,9 +8,9 @@
 self.addEventListener("install", (e) => {
   e.waitUntil(
     // Give the cache a name
-    caches.open("glitch-hello-installable-cache").then((cache) => {
+    caches.open("rrecomms-cache").then((cache) => {
       // Cache the homepage and stylesheets - add any assets you want to cache!
-      return cache.addAll(["/", "/style.css", "/index.js"]);
+      return cache.addAll(["/", "/chatRoom.js", "/install.js", "/loginStyle.css", "/manifest.json", "/service-worker.js", "/soundjs-NEXT.combined.js", "/style.css", "/w3.css", "https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@800&display=swap", "https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap", "https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap,", "https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap", "https://fonts.googleapis.com/css2?family=Gravitas+One&display=swap"]);
     })
   );
 });

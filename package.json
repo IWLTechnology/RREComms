@@ -1,13 +1,12 @@
 {
-  "name": "hello-sqlite",
-  "version": "0.1.0",
-  "description": "A Node app with SQLite database, instantly up and running.",
+  "name": "RREComms",
+  "version": "0.1.6",
+  "description": "A secret",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
   },
   "dependencies": {
-    "@fastify/busboy": "^1.2.1",
     "@fastify/formbody": "^7.4.0",
     "@fastify/multipart": "^7.6.0",
     "@fastify/static": "^6.6.0",
@@ -23,12 +22,13 @@
     "node": "14.x"
   },
   "repository": {
-    "url": "https://glitch.com/edit/#!/hello-sqlite"
+    "url": "https://glitch.com/edit/#!/rrecomms"
   },
   "license": "MIT",
   "keywords": [
     "node",
     "glitch",
     "sqlite"
-  ]
+  ],
+  "optionalDependencies": {}
 }

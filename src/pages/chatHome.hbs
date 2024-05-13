@@ -2,10 +2,10 @@
 <html lang="en">
 
 <head>
-
+<meta name="theme-color" content="#ffffff" />
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+  <link rel="stylesheet" href="/w3.css" />
     <link href="https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@800&display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet"/>
@@ -30,13 +30,12 @@
   </style>
 </head>
 
-<body onload="init()" class="w3-orange">
+<body onload="init()" style="background-color: #2E4053; color: white;">
   <div id="enabled">
       <div class="w3-top">
       <div class="w3-bar w3-black">
         <h3 style="" class="w3-bar-item w3-button w3-show-inline-block start"><span class="logo"></span><span></span><span class="head">{{name}} {{seo.title}}</span></h3>
         <h3 onclick="logout()" class="w3-bar-item w3-button w3-right ab w3-show-inline-block"><span class="logo"></span><span></span><span class="head">Logout</span></h3>
-        <h3 onclick="settings()" class="w3-bar-item w3-button w3-right ab w3-show-inline-block"><span class="logo"></span><span></span><span class="head">Settings</span></h3>
         <h3 onclick="toggleSound()" class="w3-bar-item w3-button w3-right ab w3-show-inline-block"><span class="logo"></span><span></span><span class="head"  id="toggleSound">Mute</span></h3>
       </div>
     </div>
@@ -50,10 +49,6 @@
     <div id="iframes" style="display: none;">
     
   </div>
-  {{#if image}}
-        <img class="img1" src="{{image}}" alt="Sorry This Image Could Not Be Loaded. Please Reload.">
-<br /><br/><br/>
-  {{/if}}
   <div id="messageBox" class="w3-center">
     <input type="password" style="display: none;" value="{{chats}}" id="chats">
     <input type="password" style="display: none;" value="{{un}}" id="un">
@@ -61,6 +56,10 @@
     <input type="password" style="display: none;" value="{{pin}}" id="pin">
     <input type="password" style="display: none;" value="{{ids}}" id="ids">
     <input id="name" type="password" value="{{name}}" style="display: none;">
+    <input id="avatar" type="text" value="{{image}}" style="display: none;">
+    <input id="rimage" type="text" value="{{rimage}}" style="display: none;">
+    <input id="pimage" type="text" value="{{pimage}}" style="display: none;">
+    <input id="eimage" type="text" value="{{eimage}}" style="display: none;">
     <div id="messages" class="w3-center w3-bar">
       
     </div>
@@ -68,6 +67,7 @@
     <br/>
     <br/>
   </div>
+                  <p style="display: none;" id="allowedToPost">YES</p>
           <a class="w3-bar" href="#msbtm" style="width: 100%;" id="msbtm">
     </a>
   <br />
@@ -85,7 +85,7 @@
         <h3 onclick="video()" class="w3-bar-item w3-button w3-show-inline-block messageBtn"><span class="w3-bar-item w3-input w3-bar-item w3-round-large w3-border w3-border-blue w3-ripple sendLogoBase"><img src="https://cdn.glitch.global/6e956837-d71d-4381-b8e8-10bc54d84ceb/videoicon.png?v=1709692127041" class="sendLogo"></span></h3>
         <h3 onclick="audio()" class="w3-bar-item w3-button w3-show-inline-block messageBtn"><span class="w3-bar-item w3-input w3-bar-item w3-round-large w3-border w3-border-blue w3-ripple sendLogoBase"><img src="https://cdn.glitch.global/6e956837-d71d-4381-b8e8-10bc54d84ceb/audioicon.png?v=1709692770699" class="sendLogo"></span></h3>
         <h3 onclick="link()" class="w3-bar-item w3-button w3-show-inline-block messageBtn"><span class="w3-bar-item w3-input w3-bar-item w3-round-large w3-border w3-border-blue w3-ripple sendLogoBase"><img src="https://cdn.glitch.global/6e956837-d71d-4381-b8e8-10bc54d84ceb/linkicon.png?v=1709693004932" class="sendLogo"></span></h3>
-        <h3 onclick="send()" class="w3-bar-item w3-button w3-show-inline-block messageBtn"><span class="w3-bar-item w3-input w3-bar-item w3-round-large w3-border w3-border-purple w3-ripple postBtn">Post</span></h3>
+        <h3 onclick="send()" class="w3-bar-item w3-button w3-show-inline-block messageBtn"><span class="w3-bar-item w3-input w3-bar-item w3-round-large w3-border w3-border-purple w3-ripple postBtn" id="postbtn">Post</span></h3>
       </div>
     </div>
   </div>
@@ -97,7 +97,7 @@
     <p>
       Please enable javascript then reload to continue.
     </p>
-  </div>  
+  </div> 
   </body>
 
 
