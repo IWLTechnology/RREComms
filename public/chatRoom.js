@@ -18,7 +18,7 @@
           document.getElementById('chats').value = document.getElementById('iframes').children[0].contentWindow.document.getElementById('chats').value;
             document.getElementById('iframes').innerHTML = '';
             if(document.getElementById('toggleSound').innerHTML == 'Mute'){
-                message('You got a new message!', 'Open RLComms / Games to see more.')
+                message('You got a new message!', 'Click or here open RREComms to see more.')
                 createjs.Sound.play("messageIn");
             }
             splitMessages();
@@ -45,8 +45,14 @@
 
   
     function sendMessage(message){
+      if(document.getElementById('allowedToPost').innerHTML == "YES"){
+      document.getElementById('postbtn').innerHTML = "Post in 5s...";
+      document.getElementById('allowedToPost').innerHTML = "NO";
       var name = document.getElementById('name').value;
+      var time = new Date();
+      time = time.toLocaleString('en-US', { timeZone: 'Australia/Perth' });
       message = message + `<input type="text" value="${name}" class="messagePostedBy" style="display: none;">`;
+      message = message + `<p class="timePosted">${time}</p>`;
       var logins = ['', '', '']
       logins[0] = document.getElementById('un').value;
       logins[1] = document.getElementById('pw').value;
@@ -59,6 +65,11 @@
           createjs.Sound.play("messageOut");
         }
       })
+      setTimeout(function(){
+        document.getElementById('postbtn').innerHTML = "Post";
+        document.getElementById('allowedToPost').innerHTML = "YES";
+      },5000)
+      }
     }
     function checkAuthor(id){
       var x = document.getElementById('chat' + id);
@@ -66,24 +77,36 @@
       var author = y[1].split('" class="messagePostedBy"')[0];
       if(author == document.getElementById('name').value){
         var lst = document.getElementById('chat' + id).classList;
-        lst.add("w3-blue");
-        lst.add("w3-right");
-        lst.add("w3-round-large");
-        lst.add("w3-show-inline-block");
-        lst.add("w3-bar-item");
         var st = document.getElementById('chat' + id).style;
-        st.width="33%";
+        st.width="65%";
+        st.float="right";
+        st.backgroundColor="#2471A3";
+        st.zIndex="300";
       }else{
         var lst = document.getElementById('chat' + id).classList;
-        lst.add("w3-red");
-        lst.add("w3-left");
-        lst.add("w3-round-large");
-        lst.add("w3-show-inline-block");
-        lst.add("w3-bar-item");
         var st = document.getElementById('chat' + id).style;
-        st.width="33%";
+        st.width="65%";
+        st.backgroundColor="#9B59B6";
+        st.float="left";
+        st.zIndex="300";
       }
-      
+        if(author == 'RW'){
+            x.getElementsByClassName('postAvatar')[0].src = document.getElementById('rimage').value;
+        }else if(author == 'RP'){
+            x.getElementsByClassName('postAvatar')[0].src = document.getElementById('pimage').value;
+        }else{
+            x.getElementsByClassName('postAvatar')[0].src = document.getElementById('eimage').value;
+        }
+      //getPostedDate(id);
+    }
+    function getPostedDate(id){
+      var x = document.getElementById('chat' + id);
+      console.log(x);
+      console.log(x.innerHTML);
+      var y = x.innerHTML.split('<p class="timePosted">');
+      console.log(y);
+      var time = y[1].split('</p>')[0];
+      console.log(time);
     }
     function splitMessages(){
       document.getElementById('messages').innerHTML = '';
@@ -104,7 +127,7 @@
       for(var i = 0; i < chats2.length; i++){
         var chat = chats2[i];
         var id = ids2[i];
-        document.getElementById('messages').innerHTML += `<div id="chat${id}" class="w3-bar"><span class="w3-bar-item">${chat}</span><span></span><a class="w3-blue w3-btn w3-round-large w3-border w3-border-blue w3-ripple w3-center w3-bar-item" onclick="deleteMessage(${id})">Delete</a></div><br/><br/><br/><br/><br/>`
+        document.getElementById('messages').innerHTML += `<div id="chat${id}" class="chat w3-bar"><img src="" style="" class="w3-left postAvatar"><span class="w3-bar-item">${chat}</span><span></span><a class="w3-white w3-btn w3-round-large w3-border w3-border-white w3-ripple w3-center w3-bar-item" style="float: right; text-align: center; height: 100%!important;" onclick="deleteMessage(${id})"><img src="https://cdn.glitch.global/6e956837-d71d-4381-b8e8-10bc54d84ceb/d72fddeb-0fd7-4086-8662-7ed798fde0e5.png?v=1711432237520" style="width: 20px!important; height: 20px!important; text-align: right; float; right;"></a></div><br/><br/><br/><br/><br/>`
       }
                   var id = document.getElementById('ids').value.split(';');
       for(var i =  0; i < id.length; i++){
@@ -120,7 +143,13 @@
       setTimeout(function(){
              document.getElementById("msbtm").click(); 
       }, 100);
-      message('RLComms is active!', 'RLComms is active!')
+            setTimeout(function(){
+             document.getElementById("msbtm").click(); 
+      }, 1000);
+      setTimeout(function(){
+             document.getElementById("msbtm").click(); 
+      }, 2000);
+      message('RREComms is active!', 'RREComms is active! You will now get an alert when you get a new message.')
       document.getElementById("enabled").style.display = "block";
       document.getElementById("disabled").style.display = "none";
       splitMessages();
@@ -241,7 +270,7 @@ function image(){
   var source = prompt('Enter the URL of the image to be added to the end of the message you have currently typed:');
   if(source != null){
     if(source.search('data:') == -1){
-      document.getElementById('post').value += `<img src="${source}">`;
+      document.getElementById('post').value += `<img src="${source}" width="100%" height="auto">`;
     }else{
       alert('You cannot use images without a url; they cannot contain data: in it.');
     }
@@ -251,7 +280,7 @@ function video(){
   var source = prompt('Enter the URL of the video to be added to the end of the message you have currently typed:');
   if(source != null){
     if(source.search('youtube.com') == -1){
-       document.getElementById('post').value += `<video controls>
+       document.getElementById('post').value += `<video width="100%" height="auto" controls>
   <source src="${source}" type="video/mp4">
   <source src="${source}" type="video/ogg">
   <source src="${source}" type="video/webm">
@@ -260,14 +289,14 @@ function video(){
 </video>`;
     }else{
       source = source.split('/watch?v=')[1];
-      document.getElementById('post').value += `<iframe width="560" height="315" src="https://www.youtube.com/embed/${source}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`;
+      document.getElementById('post').value += `<iframe width="100%" height="auto" src="https://www.youtube.com/embed/${source}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`;
     }
   }
 }
 function audio(){
   var source = prompt('Enter the URL of the audio file to be added to the end of the message you have currently typed:');
     if(source != null){
-     document.getElementById('post').value += `<audio controls>
+     document.getElementById('post').value += `<audio width="100%" height="auto" controls>
   <source src="${source}" type="audio/ogg">
   <source src="${source}" type="audio/mpeg">
   Your browser does not support the audio tag.
@@ -279,9 +308,9 @@ function link(){
   var txt = prompt('Enter the text to display as the link (leave blank to use the URL as the text):');
   if(source != null){
     if(txt != ''){
-     document.getElementById('post').value += `<a href="${source}">${txt}</a>`; 
+     document.getElementById('post').value += `<a href="${source}" target="_blank">${txt}</a>`; 
     }else{
-      document.getElementById('post').value += `<a href="${source}">${source}</a>`;
+      document.getElementById('post').value += `<a href="${source}" target="_blank">${source}</a>`;
     }
   }
 }

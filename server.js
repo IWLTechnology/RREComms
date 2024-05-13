@@ -39,11 +39,10 @@ fastify.get("/", async (req, reply) => {
 
   return req.query.raw ? reply.send(params) : reply.view("/src/pages/index.hbs", params);
 });
-
-fastify.get("/install", async (req, reply) => {
+fastify.get("/PWA", async (req, reply) => {
   let params = req.query.raw ? {} : { seo: seo };
 
-  return req.query.raw ? reply.send(params) : reply.view("/src/pages/install.hbs", params);
+  return req.query.raw ? reply.send(params) : reply.view("/src/pages/index.hbs", params);
 });
 
 fastify.post('/', async (req, reply) => {
@@ -60,7 +59,7 @@ fastify.post('/', async (req, reply) => {
     txt = txt.replace(/;/g, ",");
     txt = txt.replace(/\'/g, "\"");
     date = date.toLocaleString('en-US', { timeZone: 'Australia/Perth' });
-    var temp = "RW: " + txt + " (Posted on " + date + ")";
+    var temp = txt + " (Posted on " + date + ")";
     await db.addMessage(temp);
       }else if(req.body.un == process.env.pun && req.body.pw == process.env.ppw && req.body.pin == process.env.ppin){
         view = '/src/pages/post.hbs';
@@ -70,7 +69,7 @@ fastify.post('/', async (req, reply) => {
     txt = txt.replace(/;/g, ",");
     txt = txt.replace(/\'/g, "\"");
     date = date.toLocaleString('en-US', { timeZone: 'Australia/Perth' });
-    var temp = "RP: " + txt + " (Posted on " + date + ")";
+    var temp = txt + " (Posted on " + date + ")";
     await db.addMessage(temp);
       }else if(req.body.un == process.env.eun && req.body.pw == process.env.epw && req.body.pin == process.env.epin){
         view = '/src/pages/post.hbs';
@@ -80,7 +79,7 @@ fastify.post('/', async (req, reply) => {
     txt = txt.replace(/;/g, ",");
     txt = txt.replace(/\'/g, "\"");
     date = date.toLocaleString('en-US', { timeZone: 'Australia/Perth' });
-    var temp = "E: " + txt + " (Posted on " + date + ")";
+    var temp = txt + " (Posted on " + date + ")";
     await db.addMessage(temp);
       }else{
         //login incorrect
@@ -192,6 +191,9 @@ fastify.post('/', async (req, reply) => {
       //Login
       if(req.body.un == process.env.run && req.body.pw == process.env.rpw && req.body.pin == process.env.rpin){
         //R login
+        params.eimage = 'https://cdn.glitch.global/6e956837-d71d-4381-b8e8-10bc54d84ceb/unnamed.jpg?v=1709269377610';
+        params.rimage = 'https://cdn.glitch.global/6e956837-d71d-4381-b8e8-10bc54d84ceb/fedora.png?v=1714808035931';
+        params.pimage = 'https://cdn.glitch.global/6e956837-d71d-4381-b8e8-10bc54d84ceb/bear.png?v=1714807921101';
         params.un = process.env.run;
         params.pw = process.env.rpw;
         params.pin = process.env.rpin;
@@ -221,7 +223,9 @@ fastify.post('/', async (req, reply) => {
           params.chats = sendChats; //Now sent to page.
         }
       }else if(req.body.un == process.env.pun && req.body.pw == process.env.ppw && req.body.pin == process.env.ppin){ //L login
-        params.image = '';
+        params.eimage = 'https://cdn.glitch.global/6e956837-d71d-4381-b8e8-10bc54d84ceb/unnamed.jpg?v=1709269377610';
+        params.rimage = 'https://cdn.glitch.global/6e956837-d71d-4381-b8e8-10bc54d84ceb/fedora.png?v=1714808035931';
+        params.pimage = 'https://cdn.glitch.global/6e956837-d71d-4381-b8e8-10bc54d84ceb/bear.png?v=1714807921101';
         params.un = process.env.pun;
         params.pw = process.env.ppw;
         params.pin = process.env.ppin;
@@ -251,7 +255,9 @@ fastify.post('/', async (req, reply) => {
           params.chats = sendChats; //Now sent to page.
         }
       }else if(req.body.un == process.env.eun && req.body.pw == process.env.epw && req.body.pin == process.env.epin){ //L login
-        params.image = 'https://cdn.glitch.global/6e956837-d71d-4381-b8e8-10bc54d84ceb/unnamed.jpg?v=1709269377610';
+        params.eimage = 'https://cdn.glitch.global/6e956837-d71d-4381-b8e8-10bc54d84ceb/unnamed.jpg?v=1709269377610';
+        params.rimage = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1Gg4hbX7UIsVHmQdRXLmBF2MsOW3zkHfZ6zKpxSxgpA&s';
+        params.pimage = 'https://cdn.glitch.global/6e956837-d71d-4381-b8e8-10bc54d84ceb/bear.png?v=1714807921101';
         params.un = process.env.eun;
         params.pw = process.env.epw;
         params.pin = process.env.epin;
