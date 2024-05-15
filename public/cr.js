@@ -108,6 +108,20 @@
       var d = new Date();
       d = d.toLocaleString('en-US', { timeZone: 'Australia/Perth' });
       compare.push(processDateString(d));
+      var output = "";
+      if(compare[0][2] == compare[1][2]){
+        if(compare[0][1] == compare[1][1]){
+          if(compare[0][0] == compare[1][0]){
+            if(compare[0][3] == compare[1][3]){
+              if(compare[0][4] == compare[1][4]){
+                output = "Posted less than a minute ago";
+              }
+            }else{
+              output = "Posted " + compare[1][3] == compare[0][3] + " minutes ago.";
+            }
+          }
+        }
+      }
     }
 function processDateString(time){
         var temp = []

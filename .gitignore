@@ -3,4 +3,7 @@
 .config
 .node_modules
 .node
+.glitch-assets
 shrinkwrap.yaml
+.replit
+replit.nix
