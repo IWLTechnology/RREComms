@@ -101,13 +101,35 @@
     }
     function getPostedDate(id){
       var x = document.getElementById('chat' + id);
-      console.log(x);
-      console.log(x.innerHTML);
       var y = x.innerHTML.split('<p class="timePosted">');
-      console.log(y);
       var time = y[1].split('</p>')[0];
-      console.log(time);
+      var compare = [];
+      compare.push(processDateString(time));
+      var d = new Date();
+      d = d.toLocaleString('en-US', { timeZone: 'Australia/Perth' });
+      compare.push(processDateString(d));
     }
+function processDateString(time){
+        var temp = []
+	    var result = []
+	    temp.push(time.split(','));
+	    temp.push(temp[0][0].split('/'));
+	    result.push(parseInt(temp[1][1]));
+	    result.push(parseInt(temp[1][0]));
+	    result.push(parseInt(temp[1][2]));
+	    temp.push(temp[0][1].split(' '));
+	    temp.push(temp[2][1].split(':'));
+	    result.push(parseInt(temp[3][0]));
+	    result.push(parseInt(temp[3][1]));
+	    result.push(parseInt(temp[3][2]));
+	    if(temp[2][2] == "PM"){
+		    if(result[3] != "12"){
+			    result[3] = result[3] + 12;
+		    }
+	    }else{
+		    if(result[3] == "12") result[3] = "24";
+	    }
+}
     function splitMessages(){
       document.getElementById('messages').innerHTML = '';
       var chats = document.getElementById('chats').value;

@@ -9,7 +9,7 @@
   "manifest": "manifest.json",
   "stylesheet": "style.css",
   "installScript": "install.js",
-  "chatroomScript": "chatRoom.js",
+  "chatroomScript": "cr.js",
   "soundScript": "./soundjs-NEXT.combined.js",
   "chatroomStyle": "chatroomStyle.css",
   "loginStyle": "loginStyle.css",
