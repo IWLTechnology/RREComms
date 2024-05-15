@@ -1,3 +1,7 @@
+const eimage = 'https://cdn.glitch.global/6e956837-d71d-4381-b8e8-10bc54d84ceb/unnamed.jpg?v=1709269377610';
+const rimage = 'https://cdn.glitch.global/6e956837-d71d-4381-b8e8-10bc54d84ceb/fedora.png?v=1714808035931';
+const pimage = 'https://cdn.glitch.global/6e956837-d71d-4381-b8e8-10bc54d84ceb/bear.png?v=1714807921101';
+
 
 const os = require('os');
 const fs = require('fs');
@@ -53,34 +57,25 @@ fastify.post('/', async (req, reply) => {
     if(req.body.mode == "post"){
       if(req.body.un == process.env.run && req.body.pw == process.env.rpw && req.body.pin == process.env.rpin){
         view = '/src/pages/post.hbs';
-        var date = new Date();
     var txt = req.body.post;
 	  txt = txt.replace(/\n/g, "<br />");
     txt = txt.replace(/;/g, ",");
     txt = txt.replace(/\'/g, "\"");
-    date = date.toLocaleString('en-US', { timeZone: 'Australia/Perth' });
-    var temp = txt + " (Posted on " + date + ")";
-    await db.addMessage(temp);
+    await db.addMessage(txt);
       }else if(req.body.un == process.env.pun && req.body.pw == process.env.ppw && req.body.pin == process.env.ppin){
         view = '/src/pages/post.hbs';
-        var date = new Date();
     var txt = req.body.post;
 	  txt = txt.replace(/\n/g, "<br />");
     txt = txt.replace(/;/g, ",");
     txt = txt.replace(/\'/g, "\"");
-    date = date.toLocaleString('en-US', { timeZone: 'Australia/Perth' });
-    var temp = txt + " (Posted on " + date + ")";
-    await db.addMessage(temp);
+    await db.addMessage(txt);
       }else if(req.body.un == process.env.eun && req.body.pw == process.env.epw && req.body.pin == process.env.epin){
         view = '/src/pages/post.hbs';
-        var date = new Date();
     var txt = req.body.post;
 	  txt = txt.replace(/\n/g, "<br />");
     txt = txt.replace(/;/g, ",");
     txt = txt.replace(/\'/g, "\"");
-    date = date.toLocaleString('en-US', { timeZone: 'Australia/Perth' });
-    var temp = txt + " (Posted on " + date + ")";
-    await db.addMessage(temp);
+    await db.addMessage(txt);
       }else{
         //login incorrect
         params.error = "ERROR 403. ACCESS DENIED"
@@ -191,9 +186,9 @@ fastify.post('/', async (req, reply) => {
       //Login
       if(req.body.un == process.env.run && req.body.pw == process.env.rpw && req.body.pin == process.env.rpin){
         //R login
-        params.eimage = 'https://cdn.glitch.global/6e956837-d71d-4381-b8e8-10bc54d84ceb/unnamed.jpg?v=1709269377610';
-        params.rimage = 'https://cdn.glitch.global/6e956837-d71d-4381-b8e8-10bc54d84ceb/fedora.png?v=1714808035931';
-        params.pimage = 'https://cdn.glitch.global/6e956837-d71d-4381-b8e8-10bc54d84ceb/bear.png?v=1714807921101';
+        params.eimage = eimage;
+        params.rimage = rimage;
+        params.pimage = pimage;
         params.un = process.env.run;
         params.pw = process.env.rpw;
         params.pin = process.env.rpin;
@@ -223,9 +218,9 @@ fastify.post('/', async (req, reply) => {
           params.chats = sendChats; //Now sent to page.
         }
       }else if(req.body.un == process.env.pun && req.body.pw == process.env.ppw && req.body.pin == process.env.ppin){ //L login
-        params.eimage = 'https://cdn.glitch.global/6e956837-d71d-4381-b8e8-10bc54d84ceb/unnamed.jpg?v=1709269377610';
-        params.rimage = 'https://cdn.glitch.global/6e956837-d71d-4381-b8e8-10bc54d84ceb/fedora.png?v=1714808035931';
-        params.pimage = 'https://cdn.glitch.global/6e956837-d71d-4381-b8e8-10bc54d84ceb/bear.png?v=1714807921101';
+        params.eimage = eimage;
+        params.rimage = rimage;
+        params.pimage = pimage;
         params.un = process.env.pun;
         params.pw = process.env.ppw;
         params.pin = process.env.ppin;
@@ -255,9 +250,9 @@ fastify.post('/', async (req, reply) => {
           params.chats = sendChats; //Now sent to page.
         }
       }else if(req.body.un == process.env.eun && req.body.pw == process.env.epw && req.body.pin == process.env.epin){ //L login
-        params.eimage = 'https://cdn.glitch.global/6e956837-d71d-4381-b8e8-10bc54d84ceb/unnamed.jpg?v=1709269377610';
-        params.rimage = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1Gg4hbX7UIsVHmQdRXLmBF2MsOW3zkHfZ6zKpxSxgpA&s';
-        params.pimage = 'https://cdn.glitch.global/6e956837-d71d-4381-b8e8-10bc54d84ceb/bear.png?v=1714807921101';
+        params.eimage = eimage;
+        params.rimage = rimage;
+        params.pimage = pimage;
         params.un = process.env.eun;
         params.pw = process.env.epw;
         params.pin = process.env.epin;
