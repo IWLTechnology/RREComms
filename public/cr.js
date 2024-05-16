@@ -99,50 +99,63 @@
         }
       //getPostedDate(id);
     }
-    function getPostedDate(id){
-      var x = document.getElementById('chat' + id);
-      var y = x.innerHTML.split('<p class="timePosted">');
-      var time = y[1].split('</p>')[0];
-      var compare = [];
-      compare.push(processDateString(time));
-      var d = new Date();
-      d = d.toLocaleString('en-US', { timeZone: 'Australia/Perth' });
-      compare.push(processDateString(d));
-      var output = "";
-      if(compare[0][2] == compare[1][2]){
-        if(compare[0][1] == compare[1][1]){
-          if(compare[0][0] == compare[1][0]){
-            if(compare[0][3] == compare[1][3]){
-              if(compare[0][4] == compare[1][4]){
-                output = "Posted less than a minute ago";
-              }
-            }else{
-              output = "Posted " + compare[1][3] == compare[0][3] + " minutes ago.";
-            }
+function getPostedDate(id){
+  var x = document.getElementById('chat' + id);
+  var y = x.innerHTML.split('<p class="timePosted">');
+  var time = y[1].split('</p>')[0];
+  var compare = [];
+  compare.push(processDateString(time));
+  var d = new Date();
+  d = d.toLocaleString('en-US', { timeZone: 'Australia/Perth' });
+  compare.push(processDateString(d));
+  if(compare[0][3] > 12){
+    if(compare[1][3] == 0) compare[1][3] = 24;
+  }
+  var output = "";
+  if(compare[0][2] == compare[1][2]){
+    if(compare[0][1] == compare[1][1]){
+      if(compare[0][0] == compare[1][0]){
+        if(compare[0][3] == compare[1][3]){
+          if(compare[0][4] == compare[1][4]){
+            output = "Posted less that a minute ago."
+          }else{
+            output = "Posted about " + (compare[1][4] - compare[0][4]) + " minute(s) ago."
           }
+        }else{
+          output = "Posted about " + ( compare[1][3] - compare[0][3]) + " hour(s) ago."
         }
+      }else{
+        output = "Posted about " + (compare[1][0] - compare[0][0]) + " day(s) ago.";
       }
+    }else{
+      output = "Posted about " + (compare[1][1] - compare[0][1]) + " month(s) ago.";
     }
+  }else{
+    output = "Posted in " + compare[0][2] + ".";
+  }
+  return output;
+}
 function processDateString(time){
-        var temp = []
-	    var result = []
-	    temp.push(time.split(','));
-	    temp.push(temp[0][0].split('/'));
-	    result.push(parseInt(temp[1][1]));
-	    result.push(parseInt(temp[1][0]));
-	    result.push(parseInt(temp[1][2]));
-	    temp.push(temp[0][1].split(' '));
-	    temp.push(temp[2][1].split(':'));
-	    result.push(parseInt(temp[3][0]));
-	    result.push(parseInt(temp[3][1]));
-	    result.push(parseInt(temp[3][2]));
-	    if(temp[2][2] == "PM"){
-		    if(result[3] != "12"){
-			    result[3] = result[3] + 12;
-		    }
-	    }else{
-		    if(result[3] == "12") result[3] = "24";
-	    }
+    var temp = []
+  var result = []
+  temp.push(time.split(','));
+  temp.push(temp[0][0].split('/'));
+  result.push(parseInt(temp[1][1]));
+  result.push(parseInt(temp[1][0]));
+  result.push(parseInt(temp[1][2]));
+  temp.push(temp[0][1].split(' '));
+  temp.push(temp[2][1].split(':'));
+  result.push(parseInt(temp[3][0]));
+  result.push(parseInt(temp[3][1]));
+  result.push(parseInt(temp[3][2]));
+  if(temp[2][2] == "PM"){
+    if(result[3] != "12"){
+      result[3] = result[3] + 12;
+    }
+  }else{
+    if(result[3] == "12" || result[3] == 12) result[3] = 0;
+  }
+  return result;
 }
     function splitMessages(){
       document.getElementById('messages').innerHTML = '';
