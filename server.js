@@ -1,6 +1,7 @@
 const eimage = 'https://cdn.glitch.global/6e956837-d71d-4381-b8e8-10bc54d84ceb/unnamed.jpg?v=1709269377610';
 const rimage = 'https://cdn.glitch.global/6e956837-d71d-4381-b8e8-10bc54d84ceb/fedora.png?v=1714808035931';
 const pimage = 'https://cdn.glitch.global/6e956837-d71d-4381-b8e8-10bc54d84ceb/bear.png?v=1714807921101';
+const simage = 'https://cdn.glitch.global/6e956837-d71d-4381-b8e8-10bc54d84ceb/robot-icon-1024x819-ni01znnq.png?v=1715834187097';
 
 
 const os = require('os');
@@ -58,6 +59,9 @@ fastify.post('/', async (req, reply) => {
       if(req.body.un == process.env.run && req.body.pw == process.env.rpw && req.body.pin == process.env.rpin){
         view = '/src/pages/post.hbs';
     var txt = req.body.post;
+        var time = new Date();
+        time = time.toLocaleString('en-US', { timeZone: 'Australia/Perth' });
+        txt = txt + `<p class="timePosted">${time}</p>`;
 	  txt = txt.replace(/\n/g, "<br />");
     txt = txt.replace(/;/g, ",");
     txt = txt.replace(/\'/g, "\"");
@@ -65,6 +69,9 @@ fastify.post('/', async (req, reply) => {
       }else if(req.body.un == process.env.pun && req.body.pw == process.env.ppw && req.body.pin == process.env.ppin){
         view = '/src/pages/post.hbs';
     var txt = req.body.post;
+    var time = new Date();
+    time = time.toLocaleString('en-US', { timeZone: 'Australia/Perth' });
+    txt = txt + `<p class="timePosted">${time}</p>`;
 	  txt = txt.replace(/\n/g, "<br />");
     txt = txt.replace(/;/g, ",");
     txt = txt.replace(/\'/g, "\"");
@@ -72,6 +79,9 @@ fastify.post('/', async (req, reply) => {
       }else if(req.body.un == process.env.eun && req.body.pw == process.env.epw && req.body.pin == process.env.epin){
         view = '/src/pages/post.hbs';
     var txt = req.body.post;
+    var time = new Date();
+    time = time.toLocaleString('en-US', { timeZone: 'Australia/Perth' });
+    txt = txt + `<p class="timePosted">${time}</p>`;
 	  txt = txt.replace(/\n/g, "<br />");
     txt = txt.replace(/;/g, ",");
     txt = txt.replace(/\'/g, "\"");
@@ -188,11 +198,12 @@ fastify.post('/', async (req, reply) => {
         //R login
         params.eimage = eimage;
         params.rimage = rimage;
+        params.simage = simage;
         params.pimage = pimage;
         params.un = process.env.run;
         params.pw = process.env.rpw;
         params.pin = process.env.rpin;
-        view = '/src/pages/chatHome.hbs';
+        view = '/src/pages/ch.hbs';
         params.name = 'RW';
         params.error = "";
       var dbIn = await db.getMessages();
@@ -220,11 +231,12 @@ fastify.post('/', async (req, reply) => {
       }else if(req.body.un == process.env.pun && req.body.pw == process.env.ppw && req.body.pin == process.env.ppin){ //L login
         params.eimage = eimage;
         params.rimage = rimage;
+        params.simage = simage;
         params.pimage = pimage;
         params.un = process.env.pun;
         params.pw = process.env.ppw;
         params.pin = process.env.ppin;
-        view = '/src/pages/chatHome.hbs';
+        view = '/src/pages/ch.hbs';
         params.name = 'RP';
         params.error = "";
       var dbIn = await db.getMessages();
@@ -252,11 +264,12 @@ fastify.post('/', async (req, reply) => {
       }else if(req.body.un == process.env.eun && req.body.pw == process.env.epw && req.body.pin == process.env.epin){ //L login
         params.eimage = eimage;
         params.rimage = rimage;
+        params.simage = simage;
         params.pimage = pimage;
         params.un = process.env.eun;
         params.pw = process.env.epw;
         params.pin = process.env.epin;
-        view = '/src/pages/chatHome.hbs';
+        view = '/src/pages/ch.hbs';
         params.name = 'E';
         params.error = "";
       var dbIn = await db.getMessages();

@@ -49,10 +49,10 @@
       document.getElementById('postbtn').innerHTML = "Post in 5s...";
       document.getElementById('allowedToPost').innerHTML = "NO";
       var name = document.getElementById('name').value;
-      var time = new Date();
-      time = time.toLocaleString('en-US', { timeZone: 'Australia/Perth' });
+      //var time = new Date();
+      //time = time.toLocaleString('en-US', { timeZone: 'Australia/Perth' });
       message = message + `<input type="text" value="${name}" class="messagePostedBy" style="display: none;">`;
-      message = message + `<p class="timePosted">${time}</p>`;
+      //message = message + `<p class="timePosted">${time}</p>`;
       var logins = ['', '', '']
       logins[0] = document.getElementById('un').value;
       logins[1] = document.getElementById('pw').value;
@@ -76,14 +76,12 @@
       var y = x.innerHTML.split('<input type="text" value="');
       var author = y[1].split('" class="messagePostedBy"')[0];
       if(author == document.getElementById('name').value){
-        var lst = document.getElementById('chat' + id).classList;
         var st = document.getElementById('chat' + id).style;
         st.width="65%";
         st.float="right";
         st.backgroundColor="#2471A3";
         st.zIndex="300";
       }else{
-        var lst = document.getElementById('chat' + id).classList;
         var st = document.getElementById('chat' + id).style;
         st.width="65%";
         st.backgroundColor="#9B59B6";
@@ -94,10 +92,12 @@
             x.getElementsByClassName('postAvatar')[0].src = document.getElementById('rimage').value;
         }else if(author == 'RP'){
             x.getElementsByClassName('postAvatar')[0].src = document.getElementById('pimage').value;
-        }else{
+        }else if(author == 'E'){
             x.getElementsByClassName('postAvatar')[0].src = document.getElementById('eimage').value;
+        }else{
+           x.getElementsByClassName('postAvatar')[0].src = document.getElementById('simage').value;
         }
-      //getPostedDate(id);
+      x.innerHTML += "<p class='dateStamp'>" + getPostedDate(id) + "</p>";
     }
 function getPostedDate(id){
   var x = document.getElementById('chat' + id);
