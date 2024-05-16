@@ -98,13 +98,8 @@
            x.getElementsByClassName('postAvatar')[0].src = document.getElementById('simage').value;
         }
       x.innerHTML += "<p class='dateStamp'>" + getPostedDate(id) + "</p>";
+      x.getElementsByClassName('senderHeader')[0].innerHTML = `&nbsp; (${author}) sent:`;
     }
-function checkAuthor2(id){
-  var x = document.getElementById('chat' + id);
-  var y = x.innerHTML.split('<input type="text" value="');
-  var author = y[1].split('" class="messagePostedBy"')[0];
-    return author;
-}
 function getPostedDate(id){
   var x = document.getElementById('chat' + id);
   var y = x.innerHTML.split('<p class="timePosted">');
@@ -182,8 +177,7 @@ function processDateString(time){
       for(var i = 0; i < chats2.length; i++){
         var chat = chats2[i];
         var id = ids2[i];
-        var nm = checkAuthor2(id);
-        document.getElementById('messages').innerHTML += `<div id="chat${id}" class="chat w3-bar"><div style="" class="w3-center"><h1><img src="" style="" class="w3-left postAvatar"><span>(${nm}) sent:</span></h1></div><br><span class="w3-bar-item">${chat}</span><span></span><a class="w3-white w3-btn w3-round-large w3-border w3-border-white w3-ripple w3-center w3-bar-item" style="float: right; text-align: center; height: 100%!important;" onclick="deleteMessage(${id})"><img src="https://cdn.glitch.global/6e956837-d71d-4381-b8e8-10bc54d84ceb/d72fddeb-0fd7-4086-8662-7ed798fde0e5.png?v=1711432237520" style="width: 20px!important; height: 20px!important; text-align: right; float; right;"></a></div><br/><br/><br/><br/><br/>`
+        document.getElementById('messages').innerHTML += `<div id="chat${id}" class="chat w3-bar"><div style="" class="w3-bar w3-left"><h1><img src="" style="" class="postAvatar w3-bar-item"><span class="senderHeader w3-bar-item"></span></h1></div><br><br><br><br><br><br><span class="w3-center">${chat}</span><span></span><a class="w3-white w3-btn w3-round-large w3-border w3-border-white w3-ripple w3-center w3-bar-item" style="float: right; text-align: center; height: 100%!important;" onclick="deleteMessage(${id})"><img src="https://cdn.glitch.global/6e956837-d71d-4381-b8e8-10bc54d84ceb/d72fddeb-0fd7-4086-8662-7ed798fde0e5.png?v=1711432237520" style="width: 20px!important; height: 20px!important; text-align: right; float; right;"></a></div><br/><br/><br/><br/><br/>`
       }
                   var id = document.getElementById('ids').value.split(';');
       for(var i =  0; i < id.length; i++){
