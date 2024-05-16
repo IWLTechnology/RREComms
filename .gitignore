@@ -7,6 +7,7 @@
 shrinkwrap.yaml
 .replit
 replit.nix
+.git
 # Start of replit gitignore
 logs
 *.log
