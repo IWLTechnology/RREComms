@@ -36,7 +36,8 @@
       <div class="w3-bar w3-black">
         <h3 style="" class="w3-bar-item w3-button w3-show-inline-block start"><span class="logo"></span><span></span><span class="head">{{name}} {{seo.title}}</span></h3>
         <h3 onclick="logout()" class="w3-bar-item w3-button w3-right ab w3-show-inline-block"><span class="logo"></span><span></span><span class="head">Logout</span></h3>
-        <h3 onclick="toggleSound()" class="w3-bar-item w3-button w3-right ab w3-show-inline-block"><span class="logo"></span><span></span><span class="head"  id="toggleSound">Mute</span></h3>
+         <h3 onclick="settings(0)" class="w3-bar-item w3-button w3-right ab w3-show-inline-block"><span class="logo"></span><span></span><span class="head">Settings</span></h3>
+        <!--<h3 onclick="toggleSound()" class="w3-bar-item w3-button w3-right ab w3-show-inline-block"><span class="logo"></span><span></span><span class="head"  id="toggleSound">Mute</span></h3>-->
       </div>
     </div>
     <div class="w3-center">
@@ -99,6 +100,36 @@
       Please enable javascript then reload to continue.
     </p>
   </div> 
+  <div id="settings" style="display: none;">
+    <div class="w3-top">
+      <div class="w3-bar w3-black">
+        <h3 style="" class="w3-bar-item w3-button w3-show-inline-block start"><span class="logo"></span><span></span><span class="head">{{name}} {{seo.title}}</span></h3>
+        <h3 onclick="logout()" class="w3-bar-item w3-button w3-right ab w3-show-inline-block"><span class="logo"></span><span></span><span class="head">Logout</span></h3>
+         <h3 onclick="settings(1)" class="w3-bar-item w3-button w3-right ab w3-show-inline-block"><span class="logo"></span><span></span><span class="head">Back</span></h3>
+      </div>
+    </div>
+    <div class="w3-center">
+    <br/><br/><br/><br/><br/><br/>
+        <h1>
+          Settings
+        </h1>
+      <hr>
+    <br/>
+    <br/>
+    <br/>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <div class="w3-bottom w3-black">
+      <div class="w3-bar">
+      <h3 onclick="settings(1)" class="w3-bar-item w3-button w3-show-inline-block messageBtn"><span class="w3-bar-item w3-input w3-bar-item w3-round-large w3-border w3-border-blue w3-ripple sendLogoBase">Cancel</span></h3>
+      </div>
+    </div>
+    </div>
+  </div>
   </body>
 
 

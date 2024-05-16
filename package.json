@@ -1,7 +1,7 @@
 {
   "name": "RREComms",
   "version": "0.1.6",
-  "description": "A secret",
+  "description": "A private chat app with login.",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"

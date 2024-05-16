@@ -364,3 +364,17 @@ function link(){
     }
   }
 }
+function settings(input){
+  switch(input){
+    case 0:
+      document.getElementById('enabled').style.display = "none";
+      document.getElementById('settings').style.display = "block";
+      break;
+    case 1:
+      document.getElementById('enabled').style.display = "block";
+      document.getElementById('settings').style.display = "none";
+      break;
+    case 2:
+      break;
+  }
+}
