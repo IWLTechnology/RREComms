@@ -36,8 +36,8 @@
       <div class="w3-bar w3-black">
         <h3 style="" class="w3-bar-item w3-button w3-show-inline-block start"><span class="logo"></span><span></span><span class="head">{{name}} {{seo.title}}</span></h3>
         <h3 onclick="logout()" class="w3-bar-item w3-button w3-right ab w3-show-inline-block"><span class="logo"></span><span></span><span class="head">Logout</span></h3>
-         <h3 onclick="settings(0)" class="w3-bar-item w3-button w3-right ab w3-show-inline-block"><span class="logo"></span><span></span><span class="head">Settings</span></h3>
-        <!--<h3 onclick="toggleSound()" class="w3-bar-item w3-button w3-right ab w3-show-inline-block"><span class="logo"></span><span></span><span class="head"  id="toggleSound">Mute</span></h3>-->
+        <h3 onclick="toggleSound()" class="w3-bar-item w3-button w3-right ab w3-show-inline-block"><span class="logo"></span><span></span><span class="head"  id="toggleSound">Mute</span></h3>
+        <h3 onclick="settings(0)" class="w3-bar-item w3-button w3-right ab w3-show-inline-block"><span class="logo"></span><span></span><span class="head">Settings</span></h3>
       </div>
     </div>
     <div class="w3-center">
@@ -61,7 +61,7 @@
     <input id="rimage" type="text" value="{{rimage}}" style="display: none;">
     <input id="pimage" type="text" value="{{pimage}}" style="display: none;">
     <input id="eimage" type="text" value="{{eimage}}" style="display: none;">
-    <input id="eimage" type="text" value="{{simage}}" style="display: none;">
+    <input id="simage" type="text" value="{{simage}}" style="display: none;">
     <div id="messages" class="w3-center w3-bar">
       
     </div>
@@ -102,33 +102,47 @@
   </div> 
   <div id="settings" style="display: none;">
     <div class="w3-top">
-      <div class="w3-bar w3-black">
-        <h3 style="" class="w3-bar-item w3-button w3-show-inline-block start"><span class="logo"></span><span></span><span class="head">{{name}} {{seo.title}}</span></h3>
-        <h3 onclick="logout()" class="w3-bar-item w3-button w3-right ab w3-show-inline-block"><span class="logo"></span><span></span><span class="head">Logout</span></h3>
-         <h3 onclick="settings(1)" class="w3-bar-item w3-button w3-right ab w3-show-inline-block"><span class="logo"></span><span></span><span class="head">Back</span></h3>
-      </div>
+    <div class="w3-bar w3-black">
+      <h3 style="" class="w3-bar-item w3-button w3-show-inline-block start"><span class="logo"></span><span></span><span class="head">{{name}} {{seo.title}}</span></h3>
+      <h3 onclick="logout()" class="w3-bar-item w3-button w3-right ab w3-show-inline-block"><span class="logo"></span><span></span><span class="head">Logout</span></h3>
+      <h3 onclick="settings(1)" class="w3-bar-item w3-button w3-right ab w3-show-inline-block"><span class="logo"></span><span></span><span class="head">Back</span></h3>
     </div>
-    <div class="w3-center">
-    <br/><br/><br/><br/><br/><br/>
-        <h1>
-          Settings
-        </h1>
+  </div>
+  <div class="w3-center">
+  <br/><br/><br/><br/><br/><br/>
+    <h1>Volume:</h1>
+    <hr>
+  <br />
+    <p>Mute all sound: <span>&nbsp;</span><button class="w3-btn w3-border-blue w3-border w3-blue w3-round-large w3-ripple" id="muteAllSound">Off</button></p>
+    <p>Play sound when I post messages: <span>&nbsp;</span><button class="w3-btn w3-border-blue w3-border w3-blue w3-round-large w3-ripple" id="postSound">On</button></p>
+    <p>Play sound when I delete messages: <span>&nbsp;</span><button class="w3-btn w3-border-blue w3-border w3-blue w3-round-large w3-ripple" id="deleteSound">On</button></p>
+    <p>Play sound when the messages change: <span>&nbsp;</span><button class="w3-btn w3-border-blue w3-border w3-blue w3-round-large w3-ripple" id="newSound">On</button></p>
+  <br />
+    <h1>Misc:</h1>
+    <hr>
+    <br>
+     <p>Show the delete button no matter what: <span>&nbsp;</span><button class="w3-btn w3-border-blue w3-border w3-blue w3-round-large w3-ripple" id="delNoMatterWhat">Off</button></p>
+    <p>Force preivew before post: <span>&nbsp;</span><button class="w3-btn w3-border-blue w3-border w3-blue w3-round-large w3-ripple" id="forcePreview">On</button></p>
+    <div id="admin" style="display: block;">
+      <h1>Admin:</h1>
       <hr>
-    <br/>
-    <br/>
-    <br/>
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <div class="w3-bottom w3-black">
-      <div class="w3-bar"><h3 onclick="settings(1)" class="w3-bar-item w3-button w3-show-inline-block messageBtn"><span class="w3-white w3-bar-item w3-input w3-bar-item w3-round-large w3-border w3-border-blue w3-ripple sendLogoBase">Cancel</span></h3>
-      <h3 onclick="settings(2)" class="w3-bar-item w3-button w3-show-inline-block messageBtn"><span class="w3-white w3-bar-item w3-input w3-bar-item w3-round-large w3-border w3-border-blue w3-ripple sendLogoBase">Save & close</span></h3>
-      </div>
+      <br>
+      <p><button class="w3-btn w3-border-blue w3-border w3-blue w3-round-large w3-ripple" id="enterAdmin">Enter Admin</button></p>
     </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+  <div class="w3-bottom w3-black">
+    <div class="w3-bar">
+    <h3 onclick="settings(1)" class="w3-bar-item w3-button w3-show-inline-block messageBtn"><span class="w3-bar-item w3-input w3-bar-item w3-white w3-round-large w3-border w3-border-blue w3-ripple sendLogoBase">Cancel</span></h3>
+      <h3 onclick="settings(2)" class="w3-bar-item w3-button w3-show-inline-block messageBtn"><span class="w3-bar-item w3-input w3-bar-item w3-white w3-round-large w3-border w3-border-blue w3-ripple sendLogoBase">Accept</span></h3>
     </div>
+  </div>
+  </div>
   </div>
   </body>
 
