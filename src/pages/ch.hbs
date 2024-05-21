@@ -30,13 +30,12 @@
   </style>
 </head>
 
-<body onload="init()" style="background-color: #2E4053; color: white;">
+<body onload="init()" style="background-color: #2E4053; color: white;" onkeydown="processKeyPress(event)">
   <div id="enabled">
       <div class="w3-top">
       <div class="w3-bar w3-black">
         <h3 style="" class="w3-bar-item w3-button w3-show-inline-block start"><span class="logo"></span><span></span><span class="head">{{name}} {{seo.title}}</span></h3>
         <h3 onclick="logout()" class="w3-bar-item w3-button w3-right ab w3-show-inline-block"><span class="logo"></span><span></span><span class="head">Logout</span></h3>
-        <h3 onclick="toggleSound()" class="w3-bar-item w3-button w3-right ab w3-show-inline-block"><span class="logo"></span><span></span><span class="head"  id="toggleSound">Mute</span></h3>
         <h3 onclick="settings(0)" class="w3-bar-item w3-button w3-right ab w3-show-inline-block"><span class="logo"></span><span></span><span class="head">Settings</span></h3>
       </div>
     </div>
@@ -105,7 +104,6 @@
     <div class="w3-bar w3-black">
       <h3 style="" class="w3-bar-item w3-button w3-show-inline-block start"><span class="logo"></span><span></span><span class="head">{{name}} {{seo.title}}</span></h3>
       <h3 onclick="logout()" class="w3-bar-item w3-button w3-right ab w3-show-inline-block"><span class="logo"></span><span></span><span class="head">Logout</span></h3>
-      <h3 onclick="settings(1)" class="w3-bar-item w3-button w3-right ab w3-show-inline-block"><span class="logo"></span><span></span><span class="head">Back</span></h3>
     </div>
   </div>
   <div class="w3-center">
@@ -113,10 +111,16 @@
     <h1>Volume:</h1>
     <hr>
   <br />
-    <p>Mute all sound: <span>&nbsp;</span><button class="w3-btn w3-border-blue w3-border w3-blue w3-round-large w3-ripple" id="muteAllSound">Off</button></p>
-    <p>Play sound when I post messages: <span>&nbsp;</span><button class="w3-btn w3-border-blue w3-border w3-blue w3-round-large w3-ripple" id="postSound">On</button></p>
-    <p>Play sound when I delete messages: <span>&nbsp;</span><button class="w3-btn w3-border-blue w3-border w3-blue w3-round-large w3-ripple" id="deleteSound">On</button></p>
-    <p>Play sound when the messages change: <span>&nbsp;</span><button class="w3-btn w3-border-blue w3-border w3-blue w3-round-large w3-ripple" id="newSound">On</button></p>
+    <p>Mute all sound: <span>&nbsp;</span><button class="w3-btn w3-border-blue w3-border w3-blue w3-round-large w3-ripple" onclick="soundChange(0)" id="muteAllSound">Off</button></p>
+    <p>Play sound when I post messages: <span>&nbsp;</span><button class="w3-btn w3-border-blue w3-border w3-blue w3-round-large w3-ripple" onclick="soundChange(1)" id="postSound">On</button></p>
+    <p>Play sound when I delete messages: <span>&nbsp;</span><button class="w3-btn w3-border-blue w3-border w3-blue w3-round-large w3-ripple" onclick="soundChange(2)" id="deleteSound">On</button></p>
+    <p>Play sound when the messages change: <span>&nbsp;</span><button class="w3-btn w3-border-blue w3-border w3-blue w3-round-large w3-ripple" onclick="soundChange(3)" id="newSound">On</button></p>
+    <div class="hidden">
+  <p id="muteAllSound2">Off</p>
+    <p id="postSound2">On</p>
+    <p id="deleteSound2">On</p>
+    <p id="newSound2">On</p>
+    </div>
   <br />
     <h1>Misc:</h1>
     <hr>

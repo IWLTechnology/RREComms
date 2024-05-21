@@ -149,3 +149,7 @@ border-radius: 40px!important;
 .senderHeader{
   font-family: Alfa Slab One;
 }
+
+.hidden{
+  display: none;
+}
