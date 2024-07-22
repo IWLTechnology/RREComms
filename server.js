@@ -16,8 +16,6 @@ const fastify = require("fastify")({
   bodyLimit: 10 * 1024 * 1024
 });
 
-fastify.register(require('@fastify/multipart'), { attachFieldsToBody: true });
-
 
 const seo = require("./seo.json");
 if (seo.url === "glitch-default") {

@@ -30,7 +30,7 @@
   </style>
 </head>
 
-<body onload="init()" style="background-color: #2E4053; color: white;" onkeydown="processKeyPress(event)">
+<body onload="init()" style="background-color: #2E4053; color: white;">
   <div id="enabled">
       <div class="w3-top">
       <div class="w3-bar w3-black">
@@ -80,7 +80,7 @@
     <div class="w3-bottom w3-black">
       <div class="w3-bar">
         <h3 class="w3-bar-item ab w3-show-inline-block">
-          <textarea id="post" type="text" name="post" placeholder="Enter your message" class=" w3-bar-item w3-input w3-bar-item w3-round-large w3-border w3-border-black w3-ripple messageBox"></textarea><span class="w3-bar-item"></span>
+          <textarea id="post" type="text" name="post" onkeydown="processKeyPress(event)" placeholder="Enter your message" class=" w3-bar-item w3-input w3-bar-item w3-round-large w3-border w3-border-black w3-ripple messageBox"></textarea><span class="w3-bar-item"></span>
         </h3>
       <h3 onclick="image()" class="w3-bar-item w3-button w3-show-inline-block messageBtn"><span class="w3-bar-item w3-input w3-bar-item w3-round-large w3-border w3-border-blue w3-ripple sendLogoBase"><img src="https://cdn.glitch.global/6e956837-d71d-4381-b8e8-10bc54d84ceb/imgicon.png?v=1709691737708" class="sendLogo"></span></h3>
         <h3 onclick="video()" class="w3-bar-item w3-button w3-show-inline-block messageBtn"><span class="w3-bar-item w3-input w3-bar-item w3-round-large w3-border w3-border-blue w3-ripple sendLogoBase"><img src="https://cdn.glitch.global/6e956837-d71d-4381-b8e8-10bc54d84ceb/videoicon.png?v=1709692127041" class="sendLogo"></span></h3>
@@ -120,13 +120,15 @@
     <p id="postSound2">On</p>
     <p id="deleteSound2">On</p>
     <p id="newSound2">On</p>
+      <p id="delNoMatterWhat2">Off</p>
+      <p id="forcePreview2">On</p>
     </div>
   <br />
     <h1>Misc:</h1>
     <hr>
     <br>
-     <p>Show the delete button no matter what: <span>&nbsp;</span><button class="w3-btn w3-border-blue w3-border w3-blue w3-round-large w3-ripple" id="delNoMatterWhat">Off</button></p>
-    <p>Force preivew before post: <span>&nbsp;</span><button class="w3-btn w3-border-blue w3-border w3-blue w3-round-large w3-ripple" id="forcePreview">On</button></p>
+     <p>Show the delete button no matter what: <span>&nbsp;</span><button class="w3-btn w3-border-blue w3-border w3-blue w3-round-large w3-ripple" id="delNoMatterWhat" onclick="dnw()">Off</button></p>
+    <p>Force preivew before post: <span>&nbsp;</span><button class="w3-btn w3-border-blue w3-border w3-blue w3-round-large w3-ripple" id="forcePreview" onclick="forcePreview()">On</button></p>
     <div id="admin" style="display: block;">
       <h1>Admin:</h1>
       <hr>
