@@ -22,10 +22,10 @@ dbWrapper
           "CREATE TABLE Chats (id INTEGER PRIMARY KEY AUTOINCREMENT, chat TEXT)"
         );
         await db.run(
-          "INSERT INTO Chats (chat) VALUES ('SYSTEM: DO NOT DELETE THIS MESSAGE! WELCOME TO THE NEW RLCOMMS/GAMES WITH POSTING, DELETING AND NEW MESSAGE SOUND EFFECTS! NEW GAMES WILL COME IN THIS PAGE SOON! This page now automatically deletes, posts and checks for messages. The security level is now slightly higher and you do not need to enter your login details before posting. This page does not redirect you to a different page either, and every action is completed in 800ms when the page is awake, messages are checked for every 1600ms. When the messages are loaded, only the messages part changes, not the whole page. This means that the messages you are typing in do not get cleared when the messages are checked for. Also, you can now type the ; character but the apostrophe and quote marks will be removed from your messages.')"
+          `INSERT INTO Chats (chat) VALUES ('SYSTEM: DO NOT DELETE THIS MESSAGE! Welcome to the new RREComms! Everything is up to date and secure. <input type="text" value="Server" class="messagePostedBy" style="display: none;"><p class="timePosted">1/1/2000 12:00:00 PM</p>')`
         );
         await db.run(
-          "INSERT INTO Chats (chat) VALUES ('SYSTEM: DO NOT DELETE THIS MESSAGE! WELCOME TO THE NEW RLCOMMS/GAMES WITH POSTING, DELETING AND NEW MESSAGE SOUND EFFECTS! NEW GAMES WILL COME IN THIS PAGE SOON! This page now automatically deletes, posts and checks for messages. The security level is now slightly higher and you do not need to enter your login details before posting. This page does not redirect you to a different page either, and every action is completed in 800ms when the page is awake, messages are checked for every 1600ms. When the messages are loaded, only the messages part changes, not the whole page. This means that the messages you are typing in do not get cleared when the messages are checked for. Also, you can now type the ; character but the apostrophe and quote marks will be removed from your messages.')"
+          `INSERT INTO Chats (chat) VALUES ('SYSTEM: DO NOT DELETE THIS MESSAGE! Welcome to the new RREComms! Everything is up to date and secure. <input type="text" value="Server" class="messagePostedBy" style="display: none;"><p class="timePosted">1/1/2000 12:00:00 PM</p>')`
         );
       } else {
 
@@ -67,10 +67,10 @@ module.exports = {
           "CREATE TABLE Chats (id INTEGER PRIMARY KEY AUTOINCREMENT, chat TEXT)"
         );
       await db.run(
-          "INSERT INTO Chats (chat) VALUES ('SYSTEM: DO NOT DELETE THIS MESSAGE! WELCOME TO THE NEW RLCOMMS/GAMES WITH POSTING, DELETING AND NEW MESSAGE SOUND EFFECTS! NEW GAMES WILL COME IN THIS PAGE SOON! This page now automatically deletes, posts and checks for messages. The security level is now slightly higher and you do not need to enter your login details before posting. This page does not redirect you to a different page either, and every action is completed in 800ms when the page is awake, messages are checked for every 1600ms. When the messages are loaded, only the messages part changes, not the whole page. This means that the messages you are typing in do not get cleared when the messages are checked for. Also, you can now type the ; character but the apostrophe and quote marks will be removed from your messages.')"
+        `INSERT INTO Chats (chat) VALUES ('SYSTEM: DO NOT DELETE THIS MESSAGE! Welcome to the new RREComms! Everything is up to date and secure. <input type="text" value="Server" class="messagePostedBy" style="display: none;"><p class="timePosted">1/1/2000 12:00:00 PM</p>')`
         );
       await db.run(
-          "INSERT INTO Chats (chat) VALUES ('SYSTEM: DO NOT DELETE THIS MESSAGE! WELCOME TO THE NEW RLCOMMS/GAMES WITH POSTING, DELETING AND NEW MESSAGE SOUND EFFECTS! NEW GAMES WILL COME IN THIS PAGE SOON! This page now automatically deletes, posts and checks for messages. The security level is now slightly higher and you do not need to enter your login details before posting. This page does not redirect you to a different page either, and every action is completed in 800ms when the page is awake, messages are checked for every 1600ms. When the messages are loaded, only the messages part changes, not the whole page. This means that the messages you are typing in do not get cleared when the messages are checked for. Also, you can now type the ; character but the apostrophe and quote marks will be removed from your messages.')"
+        `INSERT INTO Chats (chat) VALUES ('SYSTEM: DO NOT DELETE THIS MESSAGE! Welcome to the new RREComms! Everything is up to date and secure. <input type="text" value="Server" class="messagePostedBy" style="display: none;"><p class="timePosted">1/1/2000 12:00:00 PM</p>')`
         );
     } catch (dbError) {
       console.error(dbError);
